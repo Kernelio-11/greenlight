@@ -15,7 +15,7 @@ func (app *application) writeJSON(
 	data interface{},
 	headers http.Header,
 ) error {
-	js, err := json.Marshal(data)
+	js, err := json.MarshalIndent(data, "", "\t")
 	if err != nil {
 		return err
 	}
