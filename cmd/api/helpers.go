@@ -9,10 +9,12 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+type envelope map[string]interface{}
+
 func (app *application) writeJSON(
 	w http.ResponseWriter,
 	status int,
-	data interface{},
+	data envelope,
 	headers http.Header,
 ) error {
 	js, err := json.MarshalIndent(data, "", "\t")
