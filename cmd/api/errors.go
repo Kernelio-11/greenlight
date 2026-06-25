@@ -12,6 +12,11 @@ func (app *application) logError(r *http.Request, err error) {
 	})
 }
 
+func (app *application) rateLimitExceededResponse(w http.ResponseWriter, r *http.Request) {
+	message := "rate limit exceeded"
+	app.errorResponse(w, r, http.StatusTooManyRequests, message)
+}
+
 func (app *application) errorResponse(
 	w http.ResponseWriter,
 	r *http.Request,
